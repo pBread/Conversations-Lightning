@@ -1,3 +1,6 @@
-<aura:component>
-    hello
+<aura:component implements="flexipage:availableForRecordHome">
+    <div class="c-header">
+        <img height="50" width="50" src="{!$Resource.twilio_logo}"/>
+    </div>
+
 </aura:component>	
