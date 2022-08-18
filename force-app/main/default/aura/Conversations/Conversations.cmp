@@ -1,6 +1,10 @@
-<aura:component implements="flexipage:availableForRecordHome">
-    <div class="c-header">
-        <img height="50" width="50" src="{!$Resource.twilio_logo}"/>
-    </div>
+<aura:component
+  controller="TwilioConversationApi"
+  implements="flexipage:availableForRecordHome"
+>
+  <aura:handler name="init" value="{!this}" action="{!c.init}" />
 
-</aura:component>	
+  <div class="c-header">
+    <img height="50" width="50" src="{!$Resource.twilio_logo}" />
+  </div>
+</aura:component>
