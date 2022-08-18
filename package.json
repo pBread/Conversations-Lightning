@@ -1,8 +1,8 @@
 {
-  "name": "salesforce-app",
+  "name": "twilio-conversations",
   "private": true,
   "version": "1.0.0",
-  "description": "Salesforce App",
+  "description": "Twilio Conversations",
   "scripts": {
     "lint": "eslint **/{aura,lwc}/**",
     "test": "npm run test:unit",
