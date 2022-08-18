@@ -1,7 +1,4 @@
-<aura:component
-  controller="TwilioConversationApi"
-  implements="flexipage:availableForRecordHome"
->
+<aura:component controller="TwilioConversationApi">
   <aura:handler name="init" value="{!this}" action="{!c.init}" />
   <aura:attribute name="conversationSids" type="String[]" />
 
