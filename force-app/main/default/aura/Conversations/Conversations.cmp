@@ -14,6 +14,6 @@
     var="conversationSid"
     indexVar="key"
   >
-    {!conversationSid}<br /><br />
+    <c:ConversationContainer conversationSid="{!conversationSid}" />
   </aura:iteration>
 </aura:component>

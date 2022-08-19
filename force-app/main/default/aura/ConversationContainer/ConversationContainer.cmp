@@ -1,16 +1,12 @@
 <aura:component controller="TwilioConversationApi">
-  <aura:handler name="init" value="{!this}" action="{!c.init}" />
-  <aura:attribute name="conversationSids" type="String[]" />
+  <aura:handler action="{!c.init}" name="init" value="{!this}" />
 
-  <div class="c-header">
-    <img height="50" width="50" src="{!$Resource.twilio_logo}" />
-  </div>
+  <aura:attribute
+    access="public"
+    name="conversationSid"
+    required="true"
+    type="String"
+  />
 
-  <aura:iteration
-    items="{!v.conversationSids}"
-    var="conversationSid"
-    indexVar="key"
-  >
-    {!conversationSid}<br /><br />
-  </aura:iteration>
+  <div>Child: {!v.conversationSid}</div>
 </aura:component>
