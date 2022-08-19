@@ -14,5 +14,5 @@
     type="Contact"
   />
 
-  <div>{!v.message.author} - {!v.message.body}</div>
+  <div>{!v.message.author} - {!v.message.body} – {!v.message.date_created}</div>
 </aura:component>
