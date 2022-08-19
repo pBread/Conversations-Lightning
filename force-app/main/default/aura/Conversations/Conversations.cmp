@@ -4,18 +4,10 @@
 >
   <aura:handler action="{!c.init}" name="init" value="{!this}" />
   <aura:attribute default="[]" name="conversationSids" type="String[]" />
-  <aura:handler
-    action="{!c.credentialListener}"
-    name="credentialChange"
-    value="{!v.credentials}"
-  />
-  <aura:attribute name="credentials" type="String" />
 
   <div class="c-header">
     <img height="50" width="50" src="{!$Resource.twilio_logo}" />
   </div>
-
-  <div>{!v.credentials}</div>
 
   <aura:iteration
     items="{!v.conversationSids}"
