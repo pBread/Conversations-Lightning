@@ -4,9 +4,29 @@
     if (eventParams.changeType !== "LOADED") return;
 
     helper.getCredentials(cmp).then((credentials) =>
+      // TODO: implement multi-credention. The next line disables multi-credential
       credentials.slice(0, 1).map((credential) => {
         helper.getConversations(cmp, credential).then((conversations) => {
-          console.log("conversations", conversations);
+          cmp.set("v.conversations", conversations);
+
+          conversations.forEach((conversation) => {
+            helper
+              .getParticipants(cmp, credential, conversation.conversation_sid)
+              .then((participants) => {
+                const participantMap = JSON.parse(cmp.get("v.participantMap"));
+                participantMap[conversation.conversation_sid] = participants;
+                cmp.set("v.participantMap", participantMap);
+              });
+
+            helper
+              .getMessages(cmp, credential, conversation.conversation_sid)
+              .then((messages) => {
+                const messageMap = JSON.parse(cmp.get("v.messageMap"));
+                messageMap[conversation.conversation_sid] = messages;
+
+                cmp.set("v.messageMap", messageMap);
+              });
+          });
         });
       })
     );

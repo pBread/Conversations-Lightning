@@ -18,22 +18,24 @@
   </aura:if>
 
   <!-- Other Attributes -->
-  <aura:attribute default="[]" name="conversationSids" type="String[]" />
+  <aura:attribute default="[]" name="conversations" type="List" />
+  <aura:attribute default="{}" name="messageMap" type="Object" />
+  <aura:attribute default="{}" name="participantMap" type="Object" />
   <aura:attribute name="credential" type="Twilio_Credentials__c" />
+
+  <!-- Deprecating -->
+  <aura:attribute default="[]" name="conversationSids" type="String[]" />
 
   <!-- UI -->
   <div class="c-header">
     <img height="50" width="50" src="{!$Resource.twilio_logo}" />
   </div>
 
-  <aura:iteration
-    items="{!v.conversationSids}"
-    var="conversationSid"
-    indexVar="key"
-  >
+  <aura:iteration items="{!v.conversations}" var="conversation" indexVar="key">
     <c:ConversationContainer
-      conversationSid="{!conversationSid}"
-      credential="{!v.credential}"
+      conversationSid="{!conversation.conversation_sid}"
+      messageMap="{v.messageMap}"
+      participantMap="{v.participantMap}"
       record="{!v.record}"
     />
   </aura:iteration>

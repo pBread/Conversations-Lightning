@@ -12,9 +12,15 @@
   />
   <aura:attribute
     access="public"
-    name="credential"
+    name="messageMap"
     required="true"
-    type="Twilio_Credentials__c"
+    type="Object"
+  />
+  <aura:attribute
+    access="public"
+    name="participantMap"
+    required="true"
+    type="Object"
   />
   <aura:attribute
     access="public"
