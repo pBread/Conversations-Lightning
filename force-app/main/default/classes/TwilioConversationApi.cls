@@ -1,5 +1,13 @@
 public class TwilioConversationApi {
   @AuraEnabled
+  public static List<Twilio_Credentials__c> getCredentials() {
+    return [
+      SELECT Account_SID__c, API_Key__c, id, Secret__c
+      FROM Twilio_Credentials__c
+    ];
+  }
+
+  @AuraEnabled
   public static String getConversations(
     String apiKey,
     String apiSecret,
