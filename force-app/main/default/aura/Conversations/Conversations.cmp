@@ -34,6 +34,7 @@
     <c:ConversationContainer
       conversationSid="{!conversationSid}"
       credential="{!v.credential}"
+      record="{!v.record}"
     />
   </aura:iteration>
 </aura:component>

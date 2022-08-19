@@ -7,6 +7,12 @@
     required="true"
     type="Object"
   />
+  <aura:attribute
+    access="public"
+    name="record"
+    required="true"
+    type="Contact"
+  />
 
   <div>{!v.message.author} - {!v.message.body}</div>
 </aura:component>

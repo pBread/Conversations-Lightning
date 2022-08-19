@@ -16,6 +16,12 @@
     required="true"
     type="Twilio_Credentials__c"
   />
+  <aura:attribute
+    access="public"
+    name="record"
+    required="true"
+    type="Contact"
+  />
 
   <aura:attribute access="public" default="[]" name="messages" type="List" />
   <aura:attribute
@@ -29,6 +35,6 @@
   <div>accountSid: {!v.credential.Account_SID__c}</div>
 
   <aura:iteration items="{!v.messages}" var="message" indexVar="key">
-    <c:MessageContainer message="{!message}" />
+    <c:MessageContainer message="{!message}" record="{!v.record}" />
   </aura:iteration>
 </aura:component>
