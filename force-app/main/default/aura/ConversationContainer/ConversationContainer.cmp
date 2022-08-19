@@ -17,6 +17,14 @@
     type="Twilio_Credentials__c"
   />
 
+  <aura:attribute access="public" default="[]" name="messages" type="List" />
+  <aura:attribute
+    access="public"
+    default="[]"
+    name="participants"
+    type="List"
+  />
+
   <div>conversationSid: {!v.conversationSid}</div>
   <div>accountSid: {!v.credential.Account_SID__c}</div>
 </aura:component>

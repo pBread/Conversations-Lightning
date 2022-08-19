@@ -22,6 +22,21 @@ public class TwilioConversationApi {
   }
 
   @AuraEnabled
+  public static String getMessages(
+    String apiKey,
+    String apiSecret,
+    String conversationSid
+  ) {
+    return TwilioConversationApi.makeRequest(
+      apiKey,
+      apiSecret,
+      'https://conversations.twilio.com/v1/Conversations/' +
+      conversationSid +
+      '/Messages'
+    );
+  }
+
+  @AuraEnabled
   public static String getParticipants(
     String apiKey,
     String apiSecret,
@@ -30,22 +45,9 @@ public class TwilioConversationApi {
     return TwilioConversationApi.makeRequest(
       apiKey,
       apiSecret,
-      'https://conversations.twilio.com/v1/ParticipantConversations?Address=' +
-      conversationSid
-    );
-  }
-
-  @AuraEnabled
-  public static String getInteractions(
-    String apiKey,
-    String apiSecret,
-    String conversationSid
-  ) {
-    return TwilioConversationApi.makeRequest(
-      apiKey,
-      apiSecret,
-      'https://conversations.twilio.com/v1/ParticipantConversations?Address=' +
-      conversationSid
+      'https://conversations.twilio.com/v1/Conversations/' +
+      conversationSid +
+      '/Participants'
     );
   }
 
