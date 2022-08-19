@@ -30,7 +30,9 @@
     name="participants"
     type="List"
   />
+  <aura:attribute access="public" name="participant" type="Object" />
 
+  <div>Person: {!v.participant.identity}</div>
   <div>conversationSid: {!v.conversationSid}</div>
   <div>accountSid: {!v.credential.Account_SID__c}</div>
 

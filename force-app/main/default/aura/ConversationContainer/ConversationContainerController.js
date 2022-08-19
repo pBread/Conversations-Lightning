@@ -20,23 +20,6 @@
     getMessages.setParams(params);
     getParticipants.setParams(params);
 
-    function composeCallback(property) {
-      return (res) => {
-        const state = res.getState();
-        console.log(property, "state", state);
-
-        if (state !== "SUCCESS") throw Error("Failed to fetch conversations");
-
-        const result = JSON.parse(res.getReturnValue());
-        if (result.code) return console.error(result);
-
-        console.log(property, "result", result);
-        cmp.set(property, result);
-
-        console.log(property, "cmp.get", cmp.get(property));
-      };
-    }
-
     getMessages.setCallback(this, function (res) {
       const state = res.getState();
       if (state !== "SUCCESS") throw Error("Failed to fetch conversations");
@@ -57,6 +40,12 @@
       cmp.set("v.participants", result.participants);
 
       console.log("v.participants", "cmp.get", cmp.get("v.participants"));
+
+      const participant = result.participants.find(
+        (person) => !JSON.parse(person.attributes).customer_id
+      );
+      cmp.set("v.participant", participant);
+      console.log("v.participant", "cmp.get", cmp.get("v.participant"));
     });
 
     $A.enqueueAction(getMessages);
