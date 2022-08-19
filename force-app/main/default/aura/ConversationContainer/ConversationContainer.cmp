@@ -10,6 +10,13 @@
     required="true"
     type="String"
   />
+  <aura:attribute
+    access="public"
+    name="credential"
+    required="true"
+    type="Twilio_Credentials__c"
+  />
 
-  <div>Child: {!v.conversationSid}</div>
+  <div>conversationSid: {!v.conversationSid}</div>
+  <div>accountSid: {!v.credential.Account_SID__c}</div>
 </aura:component>

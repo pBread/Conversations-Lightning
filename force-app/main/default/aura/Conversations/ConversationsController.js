@@ -11,7 +11,10 @@
 
       const credentials = res.getReturnValue();
 
-      for (const credential of credentials) {
+      // TODO: We are currently only taking the first credential record.
+      // Users may have multiple accounts
+      cmp.set("v.credential", credentials[0]);
+      for (const credential of credentials.splice(0, 1)) {
         const getConversations = cmp.get("c.getConversations");
         getConversations.setParams({
           apiKey: credential.API_Key__c,

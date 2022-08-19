@@ -19,6 +19,7 @@
 
   <!-- Other Attributes -->
   <aura:attribute default="[]" name="conversationSids" type="String[]" />
+  <aura:attribute name="credential" type="Twilio_Credentials__c" />
 
   <!-- UI -->
   <div class="c-header">
@@ -30,6 +31,9 @@
     var="conversationSid"
     indexVar="key"
   >
-    <c:ConversationContainer conversationSid="{!conversationSid}" />
+    <c:ConversationContainer
+      conversationSid="{!conversationSid}"
+      credential="{!v.credential}"
+    />
   </aura:iteration>
 </aura:component>
