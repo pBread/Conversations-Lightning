@@ -27,4 +27,8 @@
 
   <div>conversationSid: {!v.conversationSid}</div>
   <div>accountSid: {!v.credential.Account_SID__c}</div>
+
+  <aura:iteration items="{!v.messages}" var="message" indexVar="key">
+    <c:MessageContainer message="{!message}" />
+  </aura:iteration>
 </aura:component>

@@ -1,0 +1,15 @@
+<aura:component
+  controller="TwilioConversationApi"
+  implements="force:hasRecordId"
+>
+  <aura:handler action="{!c.init}" name="init" value="{!this}" />
+
+  <aura:attribute
+    access="public"
+    name="message"
+    required="true"
+    type="Object"
+  />
+
+  <div>{!v.message.author} - {!v.message.body}</div>
+</aura:component>
