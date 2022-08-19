@@ -1,5 +1,8 @@
 ({
-  init: function (cmp, ev, helper) {
+  handleRecordUpdated: function (cmp, event, helper) {
+    const eventParams = event.getParams();
+    if (eventParams.changeType !== "LOADED") return;
+
     const getCredentials = cmp.get("c.getCredentials");
 
     getCredentials.setCallback(this, function (res) {
@@ -13,7 +16,7 @@
         getConversations.setParams({
           apiKey: credential.API_Key__c,
           apiSecret: credential.Secret__c,
-          phoneNumber: "%2B18475070348"
+          phoneNumber: cmp.get("v.record.MobilePhone").replace("+", "%2B")
         });
 
         getConversations.setCallback(this, function (res) {

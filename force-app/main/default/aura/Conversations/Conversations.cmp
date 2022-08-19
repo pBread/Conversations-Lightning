@@ -1,10 +1,26 @@
 <aura:component
   controller="TwilioConversationApi"
-  implements="flexipage:availableForRecordHome"
+  implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
-  <aura:handler action="{!c.init}" name="init" value="{!this}" />
+  <!-- Fetch Record -->
+  <aura:attribute name="record" type="Object" />
+  <aura:attribute name="recordError" type="String" />
+  <force:recordData
+    aura:id="recordLoader"
+    fields="Name,MobilePhone"
+    recordId="{!v.recordId}"
+    targetFields="{!v.record}"
+    targetError="{!v.recordError}"
+    recordUpdated="{!c.handleRecordUpdated}"
+  />
+  <aura:if isTrue="{!not(empty(v.recordError))}">
+    <div class="recordError">{!v.recordError}</div>
+  </aura:if>
+
+  <!-- Other Attributes -->
   <aura:attribute default="[]" name="conversationSids" type="String[]" />
 
+  <!-- UI -->
   <div class="c-header">
     <img height="50" width="50" src="{!$Resource.twilio_logo}" />
   </div>
