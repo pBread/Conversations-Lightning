@@ -1,0 +1,6 @@
+<aura:event
+  description="Used by child components to dispatch actions to the parent, e.g. as fetch the messages of a conversation. evStateUpdate is used to propogate state."
+  type="COMPONENT"
+>
+  <aura:attribute name="type" type="String" />
+</aura:event>

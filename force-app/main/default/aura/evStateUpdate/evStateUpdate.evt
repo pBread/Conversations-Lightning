@@ -1,0 +1,4 @@
+<aura:event
+  description="Publishes the entire state tree from the parent to children whenever state is updated. Actions are dispatched from children to root using the evDispatch event. For example, a child component might use the Dispatch event to publish { type: 'FETCH_MESSAGES', payload: {conversationId: 'xxx'} } then the root component would publish the updated state upon fetching."
+  type="COMPONENT"
+/>

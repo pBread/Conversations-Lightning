@@ -2,5 +2,10 @@
   controller="TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
+  <!-- UI -->
+  <div class="c-header">
+    <img height="50" width="50" src="{!$Resource.twilio_logo}" />
+  </div>
+
   Hello World
 </aura:component>

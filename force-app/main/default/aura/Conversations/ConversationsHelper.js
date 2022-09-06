@@ -1,6 +1,7 @@
 ({
   getCredentials: function (cmp) {
     return new Promise((resolve, reject) => {
+      console.log("fired getCredentials");
       const action = cmp.get("c.getCredentials");
 
       action.setCallback(this, function (res) {
@@ -20,6 +21,7 @@
 
   getConversations: function (cmp, credential) {
     return new Promise((resolve, reject) => {
+      console.log("fired getConversations");
       const action = cmp.get("c.getConversations");
 
       action.setParams({
@@ -44,7 +46,7 @@
 
   getMessages: function (cmp, credential, conversationSid) {
     return new Promise((resolve, reject) => {
-      console.log("getMessages conversationSid", conversationSid);
+      console.log("fired getMessages");
       const action = cmp.get("c.getMessages");
 
       action.setParams({
@@ -69,7 +71,7 @@
 
   getParticipants: function (cmp, credential, conversationSid) {
     return new Promise((resolve, reject) => {
-      console.log("getParticipants conversationSid", conversationSid);
+      console.log("fired getParticipants");
       const action = cmp.get("c.getParticipants");
 
       action.setParams({
