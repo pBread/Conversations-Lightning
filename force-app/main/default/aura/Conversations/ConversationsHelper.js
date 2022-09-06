@@ -1,4 +1,12 @@
 ({
+  dispatch: function (cmp, action) {
+    const evDispatch = cmp.getEvent("evDispatch");
+    evDispatch.setParams({
+      action: JSON.stringify(action)
+    });
+    evDispatch.fire();
+  },
+
   getCredentials: function (cmp) {
     return new Promise((resolve, reject) => {
       console.log("fired getCredentials");

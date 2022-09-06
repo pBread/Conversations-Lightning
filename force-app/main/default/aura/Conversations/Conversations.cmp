@@ -2,10 +2,18 @@
   controller="TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
+  <aura:registerEvent name="evDispatch" type="c:evDispatch" />
+
+  <aura:handler
+    action="{!c.subscribeToDispatch}"
+    name="evDispatch"
+    type="c:evDispatch"
+  />
+
   <!-- UI -->
   <div class="c-header">
     <img height="50" width="50" src="{!$Resource.twilio_logo}" />
   </div>
 
-  Hello World
+  <lightning:button label="Tester" onclick="{!c.tester}" />
 </aura:component>
