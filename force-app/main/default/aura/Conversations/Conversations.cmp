@@ -2,8 +2,15 @@
   controller="TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
-  <aura:registerEvent name="evDispatch" type="c:evDispatch" />
+  <aura:attribute name="state" type="String" />
 
+  <aura:handler
+    name="stateChange"
+    value="{!v.state}"
+    action="{!c.handleValueChange}"
+  />
+
+  <aura:registerEvent name="evDispatch" type="c:evDispatch" />
   <aura:handler
     action="{!c.subscribeToDispatch}"
     name="evDispatch"
