@@ -2,41 +2,5 @@
   controller="TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
-  <!-- Fetch Record -->
-  <aura:attribute name="record" type="Object" />
-  <aura:attribute name="recordError" type="String" />
-  <force:recordData
-    aura:id="recordLoader"
-    fields="Name,MobilePhone"
-    recordId="{!v.recordId}"
-    targetFields="{!v.record}"
-    targetError="{!v.recordError}"
-    recordUpdated="{!c.handleRecordUpdated}"
-  />
-  <aura:if isTrue="{!not(empty(v.recordError))}">
-    <div class="recordError">{!v.recordError}</div>
-  </aura:if>
-
-  <!-- Other Attributes -->
-  <aura:attribute default="[]" name="conversations" type="List" />
-  <aura:attribute default="{}" name="messageMap" type="Object" />
-  <aura:attribute default="{}" name="participantMap" type="Object" />
-  <aura:attribute name="credential" type="Twilio_Credentials__c" />
-
-  <!-- Deprecating -->
-  <aura:attribute default="[]" name="conversationSids" type="String[]" />
-
-  <!-- UI -->
-  <div class="c-header">
-    <img height="50" width="50" src="{!$Resource.twilio_logo}" />
-  </div>
-
-  <aura:iteration items="{!v.conversations}" var="conversation" indexVar="key">
-    <c:ConversationContainer
-      conversationSid="{!conversation.conversation_sid}"
-      messageMap="{v.messageMap}"
-      participantMap="{v.participantMap}"
-      record="{!v.record}"
-    />
-  </aura:iteration>
+  Hello World
 </aura:component>
