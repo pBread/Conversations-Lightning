@@ -71,5 +71,12 @@
   <lightning:button label="Tester" onclick="{!c.tester}" />
 
   <aura:iteration items="{!v.credentialIds}" var="credentialId">
+    <c:AccountContainer
+      convoToCredential="{!v.convoToCredential}"
+      convoToMessages="{!v.convoToMessages}"
+      convoToParticipants="{!v.convoToParticipants}"
+      credentialSid="{!credentialId}"
+      credentialToConvos="{!v.credentialToConvos}"
+    />
   </aura:iteration>
 </aura:component>

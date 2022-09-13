@@ -16,7 +16,7 @@
     type="Map"
   />
   <aura:attribute
-    access="private"
+    access="public"
     default="{}"
     description="Map conversationSid => credential"
     name="convoToCredential"
@@ -39,5 +39,5 @@
 
   <!-- UI -->
 
-  <div>Account</div>
+  <div>Account {!v.credentialSid}</div>
 </aura:component>
