@@ -55,14 +55,5 @@
           }
         });
     });
-  },
-
-  subscribeToDispatch: function (cmp, event, helper) {
-    const action = JSON.parse(event.getParam("action"));
-    console.log("subscribeToDispatch", action);
-  },
-
-  tester: function (cmp, event, helper) {
-    console.log("tester");
   }
 });
