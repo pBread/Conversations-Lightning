@@ -20,6 +20,10 @@
 
       for (const credential of credentials)
         helper.getConversations(cmp, credential).then((convos) => {
+          const credentialToConvos = cmp.get("v.credentialToConvos");
+          credentialToConvos[credential.Id] = convos;
+          cmp.set("v.credentialToConvos", credentialToConvos);
+
           cmp.set(
             "v.convoToCredential",
             convos.reduce(
@@ -29,31 +33,39 @@
           );
           cmp.set(
             "v.convoSids",
-            convos.map((convo) => convo.sid)
+            convos.map((convo) => convo.conversation_sid)
           );
 
           for (const convo of convos) {
             helper
-              .getParticipants(cmp, credential, convo.conversation_sid)
-              .then((participants) => {
-                const convoToParticipants = JSON.parse(
-                  JSON.stringify(cmp.get("v.convoToParticipants"))
-                );
-                convoToParticipants[convo.conversation_sid] = participants;
-                cmp.set("v.convoToParticipants", convoToParticipants);
-              });
-
-            helper
               .getMessages(cmp, credential, convo.conversation_sid)
               .then((messages) => {
-                const convoToMessages = JSON.parse(
-                  JSON.stringify(cmp.get("v.convoToMessages"))
-                );
+                const convoToMessages = cmp.get("v.convoToMessages");
                 convoToMessages[convo.conversation_sid] = messages;
                 cmp.set("v.convoToMessages", convoToMessages);
               });
+
+            helper
+              .getParticipants(cmp, credential, convo.conversation_sid)
+              .then((participants) => {
+                const convoToParticipants = cmp.get("v.convoToParticipants");
+                convoToParticipants[convo.conversation_sid] = participants;
+                cmp.set("v.convoToParticipants", convoToParticipants);
+              });
           }
         });
+    });
+  },
+
+  tester: function (cmp, event, helper) {
+    [
+      "convoSids",
+      "convoToMessages",
+      "convoToParticipants",
+      "credentialToConvos"
+    ].forEach((attr) => {
+      const data = JSON.parse(JSON.stringify(cmp.get(`v.${attr}`)));
+      console.log(attr, data);
     });
   }
 });

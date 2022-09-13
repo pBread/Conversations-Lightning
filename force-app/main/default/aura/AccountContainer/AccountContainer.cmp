@@ -1,0 +1,43 @@
+<aura:component>
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="The Id of the Twilio_Credentials__c record for this account"
+    name="credentialSid"
+    required="true"
+    type="String"
+  />
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="Map credentialId => conversations"
+    name="credentialToConvos"
+    required="true"
+    type="Map"
+  />
+  <aura:attribute
+    access="private"
+    default="{}"
+    description="Map conversationSid => credential"
+    name="convoToCredential"
+    type="Map"
+  />
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="Map conversationSid => messages"
+    name="convoToMessages"
+    type="Map"
+  />
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="Map conversationSid => participant"
+    name="convoToParticipants"
+    type="Map"
+  />
+
+  <!-- UI -->
+
+  <div>Account</div>
+</aura:component>

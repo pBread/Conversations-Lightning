@@ -19,23 +19,28 @@
 
   <!-- Credentials -->
   <aura:attribute
-    access="private"
+    access="public"
     default="[]"
     description="Credential recordIds"
     name="credentialIds"
     type="String[]"
   />
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="Map credentialId => conversations"
+    name="credentialToConvos"
+    type="Map"
+  />
 
   <!-- Conversations -->
   <aura:attribute
-    access="private"
+    access="public"
     default="[]"
     description="All conversations mapped to this Contact's phone number"
     name="convoSids"
     type="String[]"
   />
-
-  <!-- Maps -->
   <aura:attribute
     access="private"
     default="{}"
@@ -64,4 +69,7 @@
   </div>
 
   <lightning:button label="Tester" onclick="{!c.tester}" />
+
+  <aura:iteration items="{!v.credentialIds}" var="credentialId">
+  </aura:iteration>
 </aura:component>
