@@ -2,19 +2,60 @@
   controller="TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
-  <aura:attribute name="state" type="String" />
+  <!-- Contact Record -->
+  <aura:attribute name="record" type="Object" />
+  <aura:attribute name="recordError" type="String" />
+  <force:recordData
+    aura:id="recordLoader"
+    fields="Name,MobilePhone"
+    recordId="{!v.recordId}"
+    recordUpdated="{!c.onRecordLoaded}"
+    targetError="{!v.recordError}"
+    targetFields="{!v.record}"
+  />
+  <aura:if isTrue="{!not(empty(v.recordError))}">
+    <div class="recordError">{!v.recordError}</div>
+  </aura:if>
 
-  <aura:handler
-    name="stateChange"
-    value="{!v.state}"
-    action="{!c.handleValueChange}"
+  <!-- Credentials -->
+  <aura:attribute
+    access="private"
+    default="[]"
+    description="Credential recordIds"
+    name="credentialIds"
+    type="String[]"
   />
 
-  <aura:registerEvent name="evDispatch" type="c:evDispatch" />
-  <aura:handler
-    action="{!c.subscribeToDispatch}"
-    name="evDispatch"
-    type="c:evDispatch"
+  <!-- Conversations -->
+  <aura:attribute
+    access="private"
+    default="[]"
+    description="All conversations mapped to this Contact's phone number"
+    name="convoSids"
+    type="String[]"
+  />
+
+  <!-- Maps -->
+  <aura:attribute
+    access="private"
+    default="{}"
+    description="Map conversationSid => credential"
+    name="convoToCredential"
+    type="Map"
+  />
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="Map conversationSid => messages"
+    name="convoToMessages"
+    type="Map"
+  />
+  <aura:attribute
+    access="public"
+    default="{}"
+    description="Map conversationSid => participant"
+    name="convoToParticipants"
+    type="Map"
   />
 
   <!-- UI -->

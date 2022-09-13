@@ -26,14 +26,14 @@
     });
   },
 
-  getConversations: function (cmp, credentials) {
+  getConversations: function (cmp, credential) {
     return new Promise((resolve, reject) => {
       console.log("fired getConversations");
       const action = cmp.get("c.getConversations");
 
       action.setParams({
-        apiKey: credentials.API_Key__c,
-        apiSecret: credentials.Secret__c,
+        apiKey: credential.API_Key__c,
+        apiSecret: credential.Secret__c,
         phoneNumber: cmp.get("v.record.MobilePhone").replace("+", "%2B")
       });
 
@@ -51,14 +51,14 @@
     });
   },
 
-  getMessages: function (cmp, credentials, conversationSid) {
+  getMessages: function (cmp, credential, conversationSid) {
     return new Promise((resolve, reject) => {
       console.log("fired getMessages");
       const action = cmp.get("c.getMessages");
 
       action.setParams({
-        apiKey: credentials.API_Key__c,
-        apiSecret: credentials.Secret__c,
+        apiKey: credential.API_Key__c,
+        apiSecret: credential.Secret__c,
         conversationSid
       });
 
@@ -99,28 +99,5 @@
 
       $A.enqueueAction(action);
     });
-  },
-
-  getState: function (cmp) {
-    const state = cmp.get("v.state");
-    if (state) return JSON.parse(state);
-    return {
-      yoko: `Ono ${Math.round(Math.random() * 100)}`
-    };
-  },
-
-  setState: function (helper, path, value) {
-    const state = helper.getState();
-
-    return path.reduce((acc, key, i) => {}, state);
-  },
-
-  reducer: function (state, action) {
-    console.log("reducer", { action, state });
-
-    switch (action.type) {
-      default:
-        return state;
-    }
   }
 });
