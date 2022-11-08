@@ -34,6 +34,6 @@
   <lightning:button label="Tester" onclick="{!c.tester}" />
 
   <aura:iteration items="{!v.credentialIds}" var="credentialId">
-    <c:AccountContainer credentialId="{!credentialId}" />
+    <c:AccountContainer contact="{!v.record}" credentialId="{!credentialId}" />
   </aura:iteration>
 </aura:component>

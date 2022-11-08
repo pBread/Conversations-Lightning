@@ -1,11 +1,19 @@
 <aura:component>
   <aura:attribute
     access="public"
-    default="{}"
+    default=""
     description="The Id of the Twilio_Credentials__c record for this account"
     name="credentialId"
     required="true"
     type="String"
+  />
+
+  <aura:attribute
+    access="public"
+    description="Contact record"
+    name="contact"
+    required="true"
+    type="Object"
   />
 
   <!-- UI -->

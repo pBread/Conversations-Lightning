@@ -10,7 +10,7 @@
   },
 
   tester: function (cmp, event, helper) {
-    ["credentialIds"].forEach((attr) => {
+    ["credentialIds", "record"].forEach((attr) => {
       const data = JSON.parse(JSON.stringify(cmp.get(`v.${attr}`)));
       console.log(attr, data);
     });
