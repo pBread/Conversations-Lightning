@@ -5,16 +5,6 @@
     const conversation = cmp.get("v.conversation");
     const twilioAccount = cmp.get("v.twilioAccount");
 
-    console.log(
-      "ConversationContainer conversation",
-      JSON.parse(JSON.stringify(conversation))
-    );
-
-    console.log(
-      "ConversationContainer twilioAccount",
-      JSON.parse(JSON.stringify(twilioAccount))
-    );
-
     helper
       .getMessages(cmp, twilioAccount.Id, conversation.conversation_sid)
       .then((messages) => {
@@ -37,7 +27,7 @@
       "twilioAccount"
     ].forEach((attr) => {
       const data = JSON.parse(JSON.stringify(cmp.get(`v.${attr}`)));
-      console.log("ConversationContainer" + attr, data);
+      console.log(`ConversationContainer ${attr}`, data);
     });
   }
 });
