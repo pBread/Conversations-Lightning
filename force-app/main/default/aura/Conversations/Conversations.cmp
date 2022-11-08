@@ -33,10 +33,12 @@
 
   <lightning:button label="Tester" onclick="{!c.tester}" />
 
-  <aura:iteration items="{!v.twilioAccounts}" var="twilioAccount">
-    <c:AccountContainer
-      contact="{!v.contact}"
-      twilioAccount="{!twilioAccount}"
-    />
-  </aura:iteration>
+  <aura:if isTrue="{!v.contact}">
+    <aura:iteration items="{!v.twilioAccounts}" var="twilioAccount">
+      <c:AccountContainer
+        contact="{!v.contact}"
+        twilioAccount="{!twilioAccount}"
+      />
+    </aura:iteration>
+  </aura:if>
 </aura:component>
