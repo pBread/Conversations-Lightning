@@ -21,9 +21,9 @@
   <aura:attribute
     access="public"
     default="{}"
-    description="Credential id"
-    name="credentials"
-    type="Object[]"
+    description="Twilio Account records"
+    name="twilioAccounts"
+    type="String[]"
   />
 
   <!-- UI -->
@@ -33,11 +33,10 @@
 
   <lightning:button label="Tester" onclick="{!c.tester}" />
 
-  <aura:iteration items="{!v.credentials}" var="credential">
+  <aura:iteration items="{!v.twilioAccounts}" var="twilioAccount">
     <c:AccountContainer
       contact="{!v.contact}"
-      credentialId="{!credential.Id}"
-      title="{!credential.Title__c}"
+      twilioAccount="{!twilioAccount}"
     />
   </aura:iteration>
 </aura:component>

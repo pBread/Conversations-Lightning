@@ -1,13 +1,12 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Secret__c</fullName>
+    <fullName>API_Key__c</fullName>
     <externalId>false</externalId>
-    <label>Secret</label>
-    <length>32</length>
-    <maskChar>asterisk</maskChar>
-    <maskType>all</maskType>
+    <label>API Key</label>
+    <length>34</length>
     <required>false</required>
     <trackHistory>false</trackHistory>
     <trackTrending>false</trackTrending>
-    <type>EncryptedText</type>
+    <type>Text</type>
+    <unique>false</unique>
 </CustomField>

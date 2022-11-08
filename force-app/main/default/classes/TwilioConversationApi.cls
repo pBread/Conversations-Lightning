@@ -1,18 +1,7 @@
 public class TwilioConversationApi {
   @AuraEnabled
-  public static List<String> getCredentialIds() {
-    List<String> ids = new List<String>();
-
-    List<Twilio_Credentials__c> credentials = [
-      SELECT Id
-      FROM Twilio_Credentials__c
-    ];
-
-    for (Twilio_Credentials__c credential : credentials) {
-      ids.add(credential.Id);
-    }
-
-    return ids;
+  public static List<Twilio_Account__c> getTwilioAccounts() {
+    return [SELECT Id, Name FROM Twilio_Account__c];
   }
 
   @AuraEnabled
@@ -54,29 +43,31 @@ public class TwilioConversationApi {
   }
 
   private static String makeRequest(String credentialId, String url) {
-    Twilio_Credentials__c credential = [
-      SELECT Account_SID__c, API_Key__c, id, Secret__c
-      FROM Twilio_Credentials__c
-      LIMIT 1
-    ];
+    // Twilio_Credentials__c credential = [
+    //   SELECT Account_SID__c, API_Key__c, id, Secret__c
+    //   FROM Twilio_Credentials__c
+    //   LIMIT 1
+    // ];
 
-    HttpRequest req = new HttpRequest();
-    req.setEndpoint(url);
-    req.setMethod('GET');
+    // HttpRequest req = new HttpRequest();
+    // req.setEndpoint(url);
+    // req.setMethod('GET');
 
-    Blob headerValue = Blob.valueOf(
-      credential.API_Key__c +
-      ':' +
-      credential.Secret__c
-    );
-    req.setHeader(
-      'Authorization',
-      'Basic ' + EncodingUtil.base64Encode(headerValue)
-    );
+    // Blob headerValue = Blob.valueOf(
+    //   credential.API_Key__c +
+    //   ':' +
+    //   credential.Secret__c
+    // );
+    // req.setHeader(
+    //   'Authorization',
+    //   'Basic ' + EncodingUtil.base64Encode(headerValue)
+    // );
 
-    Http http = new Http();
-    HTTPResponse res = http.send(req);
+    // Http http = new Http();
+    // HTTPResponse res = http.send(req);
 
-    return res.getBody();
+    // return res.getBody();
+
+    return 'hello';
   }
 }

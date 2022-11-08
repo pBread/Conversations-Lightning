@@ -6,19 +6,20 @@
     evDispatch.fire();
   },
 
-  getCredentialIds: function (cmp) {
+  getTwilioAccounts: function (cmp) {
     return new Promise((resolve, reject) => {
-      console.log("fired getCredentialIds");
-      const action = cmp.get("c.getCredentialIds");
+      console.log("fired getTwilioAccounts");
+      const action = cmp.get("c.getTwilioAccounts");
 
       action.setCallback(this, function (res) {
         const state = res.getState();
         if (state !== "SUCCESS") reject(state);
 
-        const ids = res.getReturnValue();
-        if (!ids.length || ids.length > 1) reject("No credentials");
+        const twilioAccounts = res.getReturnValue();
+        if (!twilioAccounts.length || twilioAccounts.length > 1)
+          reject("No Twilio Accounts are defined");
 
-        resolve(ids);
+        resolve(twilioAccounts);
       });
 
       $A.enqueueAction(action);

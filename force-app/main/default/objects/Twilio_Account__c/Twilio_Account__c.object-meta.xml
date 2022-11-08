@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
         <actionName>Accept</actionName>
@@ -153,15 +153,14 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <externalSharingModel>Private</externalSharingModel>
-    <label>Twilio Credentials</label>
+    <label>Twilio Account</label>
     <nameField>
-        <displayFormat>TC-{0000}</displayFormat>
-        <label>Twilio Credential</label>
+        <label>Twilio Account</label>
         <trackHistory>false</trackHistory>
-        <type>AutoNumber</type>
+        <type>Text</type>
     </nameField>
-    <pluralLabel>Twilio Credentials</pluralLabel>
-    <searchLayouts></searchLayouts>
+    <pluralLabel>Twilio Accounts</pluralLabel>
+    <searchLayouts />
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>
 </CustomObject>

@@ -4,9 +4,9 @@
     access="public"
     default=""
     description="The Id of the Twilio_Credentials__c record for this account"
-    name="credentialId"
+    name="twilioAccount"
     required="true"
-    type="String"
+    type="Object"
   />
   <aura:attribute
     access="public"
@@ -20,6 +20,6 @@
 
   <!-- UI -->
 
-  <div>Account {!v.credentialId}</div>
+  <div>Account {!v.twilioAccount.Name}</div>
   <aura:iteration> </aura:iteration>
 </aura:component>
