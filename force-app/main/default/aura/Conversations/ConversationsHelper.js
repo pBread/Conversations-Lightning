@@ -6,6 +6,27 @@
     evDispatch.fire();
   },
 
+  getCredentialIds: function (cmp) {
+    return new Promise((resolve, reject) => {
+      console.log("fired getCredentialIds");
+      const action = cmp.get("c.getCredentialIds");
+
+      action.setCallback(this, function (res) {
+        const state = res.getState();
+        if (state !== "SUCCESS") reject(state);
+
+        const ids = res.getReturnValue();
+        if (!ids.length || ids.length > 1) reject("No credentials");
+
+        resolve(ids);
+      });
+
+      $A.enqueueAction(action);
+    });
+  },
+
+  // DEPRECATED
+
   getCredentials: function (cmp) {
     return new Promise((resolve, reject) => {
       console.log("fired getCredentials");

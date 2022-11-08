@@ -1,5 +1,22 @@
 public class TwilioConversationApi {
   @AuraEnabled
+  public static List<String> getCredentialIds() {
+    List<String> ids = new List<String>();
+
+    List<Twilio_Credentials__c> credentials = [
+      SELECT Id
+      FROM Twilio_Credentials__c
+    ];
+
+    for (Twilio_Credentials__c credential : credentials) {
+      ids.add(credential.Id);
+    }
+
+    return ids;
+  }
+
+  // DEP
+  @AuraEnabled
   public static List<Twilio_Credentials__c> getCredentials() {
     return [
       SELECT Account_SID__c, API_Key__c, id, Secret__c
