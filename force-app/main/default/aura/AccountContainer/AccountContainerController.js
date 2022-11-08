@@ -5,6 +5,7 @@
 
     helper.getConversations(cmp, twilioAccount.Id).then(function (convos) {
       console.log("convos", convos);
+      cmp.set("v.conversations", convos);
     });
   },
 

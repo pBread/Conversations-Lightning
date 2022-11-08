@@ -15,12 +15,19 @@
     required="true"
     type="Object"
   />
-
-  <!-- Conversations -->
   <aura:attribute
     access="public"
-    description="All conversations of this user in this account"
-    name="conversations"
+    description="Conversation record"
+    name="conversation"
+    required="true"
+    type="Object"
+  />
+
+  <!-- Conversation Details -->
+  <aura:attribute
+    access="public"
+    description="Participants record"
+    name="participants"
     required="true"
     type="Object[]"
   />
@@ -29,15 +36,6 @@
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
 
   <!-- UI -->
-  <div>Account {!v.twilioAccount.Name}</div>
+  <div>Conversation {!v.conversation.conversation_sid}</div>
   <lightning:button label="Tester" onclick="{!c.tester}" />
-
-  <div>Conversations</div>
-  <aura:iteration items="{!v.conversations}" var="conversation">
-    <c:ConversationContainer
-      contact="{!v.contact}"
-      conversation="{!conversation}"
-      twilioAccount="{!twilioAccount}"
-    />
-  </aura:iteration>
 </aura:component>
