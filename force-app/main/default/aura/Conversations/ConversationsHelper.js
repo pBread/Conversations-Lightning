@@ -27,36 +27,13 @@
 
   // DEPRECATED
 
-  getCredentials: function (cmp) {
-    return new Promise((resolve, reject) => {
-      console.log("fired getCredentials");
-      const action = cmp.get("c.getCredentials");
-
-      action.setCallback(this, function (res) {
-        const state = res.getState();
-        if (state !== "SUCCESS") reject(state);
-
-        const credentials = res.getReturnValue();
-        if (!credentials.length || credentials.length > 1)
-          reject("No credentials");
-
-        resolve(credentials);
-      });
-
-      $A.enqueueAction(action);
-    });
-  },
-
-  getConversations: function (cmp, credential) {
+  getConversations: function (cmp, credentialId) {
     return new Promise((resolve, reject) => {
       console.log("fired getConversations");
       const action = cmp.get("c.getConversations");
 
-      action.setParams({
-        apiKey: credential.API_Key__c,
-        apiSecret: credential.Secret__c,
-        phoneNumber: cmp.get("v.record.MobilePhone").replace("+", "%2B")
-      });
+      const phoneNumber = cmp.get("v.record.MobilePhone").replace("+", "%2B");
+      action.setParams({ credentialId, phoneNumber });
 
       action.setCallback(this, function (res) {
         const state = res.getState();
@@ -72,16 +49,12 @@
     });
   },
 
-  getMessages: function (cmp, credential, conversationSid) {
+  getMessages: function (cmp, credentialId, conversationSid) {
     return new Promise((resolve, reject) => {
       console.log("fired getMessages");
       const action = cmp.get("c.getMessages");
 
-      action.setParams({
-        apiKey: credential.API_Key__c,
-        apiSecret: credential.Secret__c,
-        conversationSid
-      });
+      action.setParams({ credentialId, conversationSid });
 
       action.setCallback(this, function (res) {
         const state = res.getState();
@@ -97,16 +70,12 @@
     });
   },
 
-  getParticipants: function (cmp, credential, conversationSid) {
+  getParticipants: function (cmp, credentialId, conversationSid) {
     return new Promise((resolve, reject) => {
       console.log("fired getParticipants");
       const action = cmp.get("c.getParticipants");
 
-      action.setParams({
-        apiKey: credential.API_Key__c,
-        apiSecret: credential.Secret__c,
-        conversationSid
-      });
+      action.setParams({ credentialId, conversationSid });
 
       action.setCallback(this, function (res) {
         const state = res.getState();

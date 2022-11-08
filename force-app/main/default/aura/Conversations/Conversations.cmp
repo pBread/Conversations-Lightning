@@ -3,7 +3,7 @@
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
   <!-- Contact Record -->
-  <aura:attribute name="record" type="Object" />
+  <aura:attribute name="contact" type="Object" />
   <aura:attribute name="recordError" type="String" />
   <force:recordData
     aura:id="recordLoader"
@@ -11,7 +11,7 @@
     recordId="{!v.recordId}"
     recordUpdated="{!c.onRecordLoaded}"
     targetError="{!v.recordError}"
-    targetFields="{!v.record}"
+    targetFields="{!v.contact}"
   />
   <aura:if isTrue="{!not(empty(v.recordError))}">
     <div class="recordError">{!v.recordError}</div>
@@ -20,10 +20,10 @@
   <!-- Credentials -->
   <aura:attribute
     access="public"
-    default="[]"
-    description="Credential recordIds"
-    name="credentialIds"
-    type="String[]"
+    default="{}"
+    description="Credential id"
+    name="credentials"
+    type="Object[]"
   />
 
   <!-- UI -->
@@ -33,7 +33,11 @@
 
   <lightning:button label="Tester" onclick="{!c.tester}" />
 
-  <aura:iteration items="{!v.credentialIds}" var="credentialId">
-    <c:AccountContainer contact="{!v.record}" credentialId="{!credentialId}" />
+  <aura:iteration items="{!v.credentials}" var="credential">
+    <c:AccountContainer
+      contact="{!v.contact}"
+      credentialId="{!credential.Id}"
+      title="{!credential.Title__c}"
+    />
   </aura:iteration>
 </aura:component>

@@ -1,4 +1,5 @@
 <aura:component>
+  <!-- Parent Attributes -->
   <aura:attribute
     access="public"
     default=""
@@ -7,7 +8,6 @@
     required="true"
     type="String"
   />
-
   <aura:attribute
     access="public"
     description="Contact record"
@@ -15,6 +15,8 @@
     required="true"
     type="Object"
   />
+
+  <!-- Conversations -->
 
   <!-- UI -->
 
