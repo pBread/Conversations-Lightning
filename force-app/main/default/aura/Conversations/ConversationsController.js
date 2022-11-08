@@ -4,8 +4,8 @@
     const eventParams = event.getParams();
     if (eventParams.changeType !== "LOADED") return;
 
-    helper.getTwilioAccounts(cmp).then((ids) => {
-      cmp.set("v.twilioAccounts", ids);
+    helper.getTwilioAccounts(cmp).then((twilioAccounts) => {
+      cmp.set("v.twilioAccounts", twilioAccounts);
     });
   },
 

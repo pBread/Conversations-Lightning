@@ -23,7 +23,7 @@
     default="{}"
     description="Twilio Account records"
     name="twilioAccounts"
-    type="String[]"
+    type="Object[]"
   />
 
   <!-- UI -->

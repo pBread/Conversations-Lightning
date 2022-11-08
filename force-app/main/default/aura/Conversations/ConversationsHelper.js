@@ -1,11 +1,4 @@
 ({
-  dispatch: function (cmp, action) {
-    console.log("helper.dispatch");
-    const evDispatch = cmp.getEvent("evDispatch");
-    evDispatch.setParams({ action: JSON.stringify(action) });
-    evDispatch.fire();
-  },
-
   getTwilioAccounts: function (cmp) {
     return new Promise((resolve, reject) => {
       console.log("fired getTwilioAccounts");
@@ -28,13 +21,13 @@
 
   // DEPRECATED
 
-  getConversations: function (cmp, credentialId) {
+  getConversations: function (cmp, twilioAccountId) {
     return new Promise((resolve, reject) => {
       console.log("fired getConversations");
       const action = cmp.get("c.getConversations");
 
       const phoneNumber = cmp.get("v.record.MobilePhone").replace("+", "%2B");
-      action.setParams({ credentialId, phoneNumber });
+      action.setParams({ twilioAccountId, phoneNumber });
 
       action.setCallback(this, function (res) {
         const state = res.getState();
@@ -50,12 +43,12 @@
     });
   },
 
-  getMessages: function (cmp, credentialId, conversationSid) {
+  getMessages: function (cmp, twilioAccountId, conversationSid) {
     return new Promise((resolve, reject) => {
       console.log("fired getMessages");
       const action = cmp.get("c.getMessages");
 
-      action.setParams({ credentialId, conversationSid });
+      action.setParams({ twilioAccountId, conversationSid });
 
       action.setCallback(this, function (res) {
         const state = res.getState();
@@ -71,12 +64,12 @@
     });
   },
 
-  getParticipants: function (cmp, credentialId, conversationSid) {
+  getParticipants: function (cmp, twilioAccountId, conversationSid) {
     return new Promise((resolve, reject) => {
       console.log("fired getParticipants");
       const action = cmp.get("c.getParticipants");
 
-      action.setParams({ credentialId, conversationSid });
+      action.setParams({ twilioAccountId, conversationSid });
 
       action.setCallback(this, function (res) {
         const state = res.getState();

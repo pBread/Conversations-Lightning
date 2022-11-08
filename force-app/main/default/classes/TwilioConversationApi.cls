@@ -6,11 +6,11 @@ public class TwilioConversationApi {
 
   @AuraEnabled
   public static String getConversations(
-    String credentialId,
+    String twilioAccountId,
     String phoneNumber
   ) {
     return TwilioConversationApi.makeRequest(
-      credentialId,
+      twilioAccountId,
       'https://conversations.twilio.com/v1/ParticipantConversations?Address=' +
       phoneNumber
     );
@@ -18,11 +18,11 @@ public class TwilioConversationApi {
 
   @AuraEnabled
   public static String getMessages(
-    String credentialId,
+    String twilioAccountId,
     String conversationSid
   ) {
     return TwilioConversationApi.makeRequest(
-      credentialId,
+      twilioAccountId,
       'https://conversations.twilio.com/v1/Conversations/' +
       conversationSid +
       '/Messages'
@@ -31,43 +31,41 @@ public class TwilioConversationApi {
 
   @AuraEnabled
   public static String getParticipants(
-    String credentialId,
+    String twilioAccountId,
     String conversationSid
   ) {
     return TwilioConversationApi.makeRequest(
-      credentialId,
+      twilioAccountId,
       'https://conversations.twilio.com/v1/Conversations/' +
       conversationSid +
       '/Participants'
     );
   }
 
-  private static String makeRequest(String credentialId, String url) {
-    // Twilio_Credentials__c credential = [
-    //   SELECT Account_SID__c, API_Key__c, id, Secret__c
-    //   FROM Twilio_Credentials__c
-    //   LIMIT 1
-    // ];
+  private static String makeRequest(String twilioAccountId, String url) {
+    Twilio_Account__c twilioAccount = [
+      SELECT Account_SID__c, API_Key__c, id, Secret__c
+      FROM Twilio_Account__c
+      LIMIT 1
+    ];
 
-    // HttpRequest req = new HttpRequest();
-    // req.setEndpoint(url);
-    // req.setMethod('GET');
+    HttpRequest req = new HttpRequest();
+    req.setEndpoint(url);
+    req.setMethod('GET');
 
-    // Blob headerValue = Blob.valueOf(
-    //   credential.API_Key__c +
-    //   ':' +
-    //   credential.Secret__c
-    // );
-    // req.setHeader(
-    //   'Authorization',
-    //   'Basic ' + EncodingUtil.base64Encode(headerValue)
-    // );
+    Blob headerValue = Blob.valueOf(
+      twilioAccount.API_Key__c +
+      ':' +
+      twilioAccount.Secret__c
+    );
+    req.setHeader(
+      'Authorization',
+      'Basic ' + EncodingUtil.base64Encode(headerValue)
+    );
 
-    // Http http = new Http();
-    // HTTPResponse res = http.send(req);
+    Http http = new Http();
+    HTTPResponse res = http.send(req);
 
-    // return res.getBody();
-
-    return 'hello';
+    return res.getBody();
   }
 }
