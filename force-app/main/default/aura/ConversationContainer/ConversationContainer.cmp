@@ -36,6 +36,12 @@
     name="participants"
     type="Object[]"
   />
+  <aura:attribute
+    access="public"
+    description="Participant record of the Frontline/Flex user"
+    name="agent"
+    type="Object"
+  />
 
   <!-- Handlers -->
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
@@ -43,4 +49,6 @@
   <!-- UI -->
   <div>Conversation {!v.conversation.conversation_sid}</div>
   <lightning:button label="Tester" onclick="{!c.tester}" />
+
+  <div>Agent {!v.agent.identity}</div>
 </aura:component>

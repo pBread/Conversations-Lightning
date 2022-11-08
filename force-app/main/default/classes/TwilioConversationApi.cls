@@ -1,5 +1,16 @@
 public class TwilioConversationApi {
   @AuraEnabled
+  public static User getUser(String email) {
+    System.debug(email);
+
+    User user = [SELECT Id, Name, Email FROM User WHERE Email = :email LIMIT 1];
+
+    System.debug(user);
+
+    return user;
+  }
+
+  @AuraEnabled
   public static List<Twilio_Account__c> getTwilioAccounts() {
     return [SELECT Id, Name FROM Twilio_Account__c];
   }

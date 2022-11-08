@@ -15,6 +15,18 @@
       .getParticipants(cmp, twilioAccount.Id, conversation.conversation_sid)
       .then((participants) => {
         cmp.set("v.participants", participants);
+
+        // TO DO: This will work for Frontline users but not necessarily Flex or Conversations users
+        const agentParticipant = participants.find(
+          (participant) => participant.identity
+        );
+        helper.getUser(cmp, agentParticipant.identity).then((agent) => {
+          console.log("getUser agent", agent);
+          cmp.set("v.agent", agent);
+        });
+      })
+      .catch((it) => {
+        console.log("Rejected ", it);
       });
   },
 

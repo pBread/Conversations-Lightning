@@ -1,4 +1,28 @@
 ({
+  getUser: function (cmp, email) {
+    return new Promise((resolve, reject) => {
+      console.log("fired getUser");
+      const action = cmp.get("c.getUser");
+
+      action.setParams({ email });
+
+      action.setCallback(this, function (res) {
+        const state = res.getState();
+        console.log("Callback state ", state);
+
+        if (state !== "SUCCESS") throw Error("Failed to fetch conversations");
+
+        const result = JSON.parse(res.getReturnValue());
+        console.log("Callback result ", result);
+        if (result.code) return reject(result);
+
+        resolve(result);
+      });
+
+      $A.enqueueAction(action);
+    });
+  },
+
   getMessages: function (cmp, twilioAccountId, conversationSid) {
     return new Promise((resolve, reject) => {
       console.log("fired getMessages");
