@@ -1,4 +1,4 @@
-<aura:component>
+<aura:component controller="TwilioConversationApi">
   <!-- Parent Attributes -->
   <aura:attribute
     access="public"
@@ -17,9 +17,21 @@
   />
 
   <!-- Conversations -->
+  <aura:attribute
+    access="public"
+    description="All conversations of this user in this account"
+    name="conversations"
+    required="true"
+    type="Object[]"
+  />
+
+  <!-- Handlers -->
+  <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
 
   <!-- UI -->
 
   <div>Account {!v.twilioAccount.Name}</div>
-  <aura:iteration> </aura:iteration>
+  <aura:iteration items="{!v.conversations}" var="conversation">
+    {!conversation}
+  </aura:iteration>
 </aura:component>
