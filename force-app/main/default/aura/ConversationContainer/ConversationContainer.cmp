@@ -26,9 +26,14 @@
   <!-- Conversation Details -->
   <aura:attribute
     access="public"
-    description="Participants record"
+    description="Message records"
+    name="messages"
+    type="Object[]"
+  />
+  <aura:attribute
+    access="public"
+    description="Participant records"
     name="participants"
-    required="true"
     type="Object[]"
   />
 

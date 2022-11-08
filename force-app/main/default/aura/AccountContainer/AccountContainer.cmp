@@ -37,7 +37,7 @@
     <c:ConversationContainer
       contact="{!v.contact}"
       conversation="{!conversation}"
-      twilioAccount="{!twilioAccount}"
+      twilioAccount="{!v.twilioAccount}"
     />
   </aura:iteration>
 </aura:component>
