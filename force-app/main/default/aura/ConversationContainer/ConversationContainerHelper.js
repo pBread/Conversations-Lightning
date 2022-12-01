@@ -36,15 +36,8 @@
           Object.assign(msg, {
             dateTime: new Date(msg.date_updated).toLocaleString(),
             isInbound: msg.author.includes("@"),
-
-            showAuthor:
-              // show author only if this is last message
-              idx + 1 === arr.length ||
-              // show author only if the next message is not this author
-              arr[idx + 1].author !== msg.author ||
-              // show author only if next message isn't until next day
-              new Date(arr[idx + 1].date_updated).toDateString() !==
-                new Date(msg.date_updated).toDateString()
+            showAuthor: showAuthor(msg, idx, arr),
+            showDateTime: showDateTime(msg, idx, arr)
           })
         );
 
@@ -52,6 +45,32 @@
       });
 
       $A.enqueueAction(action);
+
+      // Helpers
+
+      function showAuthor(msg, idx, arr) {
+        return (
+          // show author if this is last message
+          idx + 1 === arr.length ||
+          // show author if the next message is not this author
+          arr[idx + 1].author !== msg.author
+        );
+      }
+
+      function showDateTime(msg, idx, arr) {
+        if (showAuthor(msg, idx, arr)) return true;
+
+        const curDate = new Date(msg.date_updated);
+        const nextDate = new Date(arr[idx + 1].date_updated);
+
+        console.log("showDateTime", Math.abs(curDate - nextDate));
+        return (
+          // show time if more than X minutes between next message
+          Math.abs(curDate - nextDate) > 10 * 60 * 1000 ||
+          // show time if next message is in the next hour
+          curDate.getHours() !== nextDate.getHours()
+        );
+      }
     });
   },
 

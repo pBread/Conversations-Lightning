@@ -30,9 +30,14 @@
           <div class="slds-chat-message__text slds-chat-message__text_inbound">
             <span>{!v.message.body}</span>
           </div>
-          <aura:if isTrue="{!v.message.showAuthor}">
+          <aura:if isTrue="{!v.message.showAuthor || v.message.showDateTime}">
             <div class="slds-chat-message__meta">
-              {!v.agent.Name} • {!v.message.dateTime}
+              <aura:if isTrue="{!v.message.showAuthor}">
+                {!v.contact.Name} •
+              </aura:if>
+              <aura:if isTrue="{!v.message.showDateTime}">
+                {!v.message.dateTime}
+              </aura:if>
             </div>
           </aura:if>
         </div>
@@ -47,9 +52,14 @@
           <div class="slds-chat-message__text slds-chat-message__text_outbound">
             <span>{!v.message.body}</span>
           </div>
-          <aura:if isTrue="{!v.message.showAuthor}">
+          <aura:if isTrue="{!v.message.showAuthor || v.message.showDateTime}">
             <div class="slds-chat-message__meta">
-              {!v.contact.Name} • {!v.message.dateTime}
+              <aura:if isTrue="{!v.message.showAuthor}">
+                {!v.contact.Name} •
+              </aura:if>
+              <aura:if isTrue="{!v.message.showDateTime}">
+                {!v.message.dateTime}
+              </aura:if>
             </div>
           </aura:if>
         </div>
