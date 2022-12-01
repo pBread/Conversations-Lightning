@@ -7,7 +7,6 @@
 
       action.setCallback(this, function (res) {
         const state = res.getState();
-
         if (state !== "SUCCESS") throw Error("Failed to fetch user");
 
         const result = res.getReturnValue();
@@ -33,7 +32,11 @@
         const result = JSON.parse(res.getReturnValue());
         if (result.code) return reject(result);
 
-        resolve(result.messages);
+        const messages = result.messages.map((msg) =>
+          Object.assign(msg, { isInbound: msg.author.includes("@") })
+        );
+
+        resolve(messages);
       });
 
       $A.enqueueAction(action);
