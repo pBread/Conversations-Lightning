@@ -29,10 +29,6 @@
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
 
   <!-- UI -->
-  <div>Account {!v.twilioAccount.Name}</div>
-  <lightning:button label="Tester" onclick="{!c.tester}" />
-
-  <div>Conversations</div>
   <aura:iteration items="{!v.conversations}" var="conversation">
     <c:ConversationContainer
       contact="{!v.contact}"

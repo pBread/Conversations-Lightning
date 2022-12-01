@@ -31,8 +31,6 @@
     <img height="50" width="50" src="{!$Resource.twilio_logo}" />
   </div>
 
-  <lightning:button label="Tester" onclick="{!c.tester}" />
-
   <aura:if isTrue="{!v.contact}">
     <aura:iteration items="{!v.twilioAccounts}" var="twilioAccount">
       <c:AccountContainer
