@@ -57,7 +57,13 @@
     </div>
 
     <ul class="slds-chat-list">
-      <li class="slds-chat-listitem">Hello</li>
+      <aura:iteration items="{!v.messages}" var="message">
+        <c:Message
+          agent="{!v.agent}"
+          contact="{!v.contact}"
+          message="{!message}"
+        />
+      </aura:iteration>
     </ul>
   </section>
 </aura:component>

@@ -1,0 +1,26 @@
+<aura:component controller="TwilioConversationApi">
+  <!-- Parent Attributes -->
+  <aura:attribute
+    access="public"
+    description="Flex/Frontline user record"
+    name="agent"
+    required="true"
+    type="Object"
+  />
+  <aura:attribute
+    access="public"
+    description="Contact record"
+    name="contact"
+    required="true"
+    type="Object"
+  />
+  <aura:attribute
+    access="public"
+    description="Message records"
+    name="message"
+    required="true"
+    type="Object"
+  />
+  <!-- UI -->
+  <li class="slds-chat-listitem">{!v.message.body}</li>
+</aura:component>
