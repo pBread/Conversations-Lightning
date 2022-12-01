@@ -33,7 +33,7 @@
         <div class="slds-media__figure">
           <span class="slds-icon_container">
             <img height="50" width="50" src="{!$Resource.twilio_logo}" />
-            <span class="slds-assistive-text">Twilio Conversations</span>
+            <span class="slds-assistive-text">Conversations</span>
           </span>
         </div>
         <div class="slds-media__body">
