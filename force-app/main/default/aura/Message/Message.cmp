@@ -30,9 +30,11 @@
           <div class="slds-chat-message__text slds-chat-message__text_inbound">
             <span>{!v.message.body}</span>
           </div>
-          <div class="slds-chat-message__meta">
-            {!v.agent.Name} • {!v.message.dateTime}
-          </div>
+          <aura:if isTrue="{!v.message.showAuthor}">
+            <div class="slds-chat-message__meta">
+              {!v.agent.Name} • {!v.message.dateTime}
+            </div>
+          </aura:if>
         </div>
       </div>
     </li>
