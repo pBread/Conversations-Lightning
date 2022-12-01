@@ -38,13 +38,14 @@
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
   <aura:handler
     action="{!c.handleUpdateIdentities}"
+    name="updateIdentities"
     event="c:Update_Identities"
   />
 
   <!-- UI -->
   <lightning:button label="Tester" onclick="{!c.tester}" />
   <aura:iteration items="{!v.identities}" var="identity">
-    <div>{!identity}</div>
+    <div>{!identity.Name}</div>
   </aura:iteration>
 
   <aura:iteration items="{!v.conversations}" var="conversation">

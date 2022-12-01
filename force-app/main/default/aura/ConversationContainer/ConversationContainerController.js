@@ -24,6 +24,7 @@
           cmp.set("v.agent", agent);
 
           const updateIdentities = cmp.getEvent("updateIdentities");
+          // const updateIdentities = $A.get("e.c:Update_Identities");
           console.log("getUser Callback", updateIdentities);
 
           updateIdentities.setParams({

@@ -11,10 +11,10 @@
     const email = event.getParam("email");
     const name = event.getParam("name");
 
-    const identities = cmp.get("identities");
+    const identities = JSON.parse(JSON.stringify(cmp.get("v.identities")));
 
     console.log("handleUpdateIdentities", { email, name, identities });
-    cmp.set("identities", identities.concat({ email, name }));
+    cmp.set("v.identities", identities.concat({ email, name }));
   },
 
   tester: function (cmp, event, helper) {
