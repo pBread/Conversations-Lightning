@@ -45,7 +45,7 @@
   <!-- UI -->
   <lightning:button label="Tester" onclick="{!c.tester}" />
   <aura:iteration items="{!v.identities}" var="identity">
-    <div>{!identity.Name}</div>
+    <div>{!identity.name}</div>
   </aura:iteration>
 
   <aura:iteration items="{!v.conversations}" var="conversation">
