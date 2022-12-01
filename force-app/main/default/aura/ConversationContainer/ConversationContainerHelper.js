@@ -33,7 +33,10 @@
         if (result.code) return reject(result);
 
         const messages = result.messages.map((msg) =>
-          Object.assign(msg, { isInbound: msg.author.includes("@") })
+          Object.assign(msg, {
+            dateTime: new Date(msg.date_updated).toLocaleString(),
+            isInbound: msg.author.includes("@")
+          })
         );
 
         resolve(messages);
