@@ -1,7 +1,5 @@
 ({
   initialize: function (cmp, event, helper) {
-    console.log("initialize ConversationContainer");
-
     const conversation = cmp.get("v.conversation");
     const twilioAccount = cmp.get("v.twilioAccount");
 
@@ -21,12 +19,8 @@
           (participant) => participant.identity
         );
         helper.getUser(cmp, agentParticipant.identity).then((agent) => {
-          console.log("getUser agent", agent);
           cmp.set("v.agent", agent);
         });
-      })
-      .catch((it) => {
-        console.log("Rejected ", it);
       });
   },
 

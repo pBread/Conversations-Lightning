@@ -1,10 +1,8 @@
 ({
   initialize: function (cmp, event, helper) {
-    console.log("initialize AccountContainer");
     const twilioAccount = cmp.get("v.twilioAccount");
 
     helper.getConversations(cmp, twilioAccount.Id).then(function (convos) {
-      console.log("convos", convos);
       cmp.set("v.conversations", convos);
     });
   },

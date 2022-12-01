@@ -1,7 +1,6 @@
 ({
   getTwilioAccounts: function (cmp) {
     return new Promise((resolve, reject) => {
-      console.log("fired getTwilioAccounts");
       const action = cmp.get("c.getTwilioAccounts");
 
       action.setCallback(this, function (res) {
