@@ -22,5 +22,12 @@
     type="Object"
   />
   <!-- UI -->
-  <li class="slds-chat-listitem">{!v.message.body}</li>
+
+  <aura:if isTrue="{!v.message.isInbound}">
+    <li class="slds-chat-listitem">Inbound {!v.message.body}</li>
+  </aura:if>
+
+  <aura:if isTrue="{!!v.message.isInbound}">
+    <li class="slds-chat-listitem">Outbound {!v.message.body}</li>
+  </aura:if>
 </aura:component>
