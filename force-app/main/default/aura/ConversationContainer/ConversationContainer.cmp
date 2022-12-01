@@ -54,7 +54,9 @@
 
   <section role="log" class="slds-chat">
     <div class="slds-chat-bookend">
-      <p>Conversation with <b>{!v.agent.Name}</b> • 4:59 PM</p>
+      <p>
+        Conversation with <b>{!v.agent.Name}</b> • {!v.conversation.lastUpdated}
+      </p>
     </div>
 
     <ul class="slds-chat-list">

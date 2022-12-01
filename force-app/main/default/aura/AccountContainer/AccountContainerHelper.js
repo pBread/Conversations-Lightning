@@ -14,7 +14,15 @@
         const result = JSON.parse(res.getReturnValue());
         if (result.code) return reject(result);
 
-        resolve(result.conversations);
+        const conversations = result.conversations.map((convo) =>
+          Object.assign(convo, {
+            lastUpdated: new Date(
+              convo.conversation_date_updated
+            ).toLocaleString()
+          })
+        );
+
+        resolve(conversations);
       });
 
       $A.enqueueAction(action);
