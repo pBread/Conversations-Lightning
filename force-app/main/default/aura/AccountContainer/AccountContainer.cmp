@@ -21,14 +21,32 @@
     access="public"
     description="All conversations of this user in this account"
     name="conversations"
-    required="true"
+    type="Object[]"
+  />
+  <aura:attribute
+    access="public"
+    default="[]"
+    description="All users of this user in this account"
+    name="identities"
     type="Object[]"
   />
 
+  <!-- Events -->
+  <!-- <aura:registerEvent name="updateIdentities" type="c:Update_Identities" /> -->
+
   <!-- Handlers -->
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
+  <aura:handler
+    action="{!c.handleUpdateIdentities}"
+    event="c:Update_Identities"
+  />
 
   <!-- UI -->
+  <lightning:button label="Tester" onclick="{!c.tester}" />
+  <aura:iteration items="{!v.identities}" var="identity">
+    <div>{!identity}</div>
+  </aura:iteration>
+
   <aura:iteration items="{!v.conversations}" var="conversation">
     <c:ConversationContainer
       contact="{!v.contact}"

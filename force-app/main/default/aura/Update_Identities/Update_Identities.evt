@@ -1,0 +1,4 @@
+<aura:event type="APPLICATION" description="Event template">
+  <aura:attribute name="email" required="true" type="String" />
+  <aura:attribute name="name" required="true" type="String" />
+</aura:event>

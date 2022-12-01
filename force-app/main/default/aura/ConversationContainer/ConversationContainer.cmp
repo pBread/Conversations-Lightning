@@ -43,6 +43,9 @@
     type="Object"
   />
 
+  <!-- Events -->
+  <aura:registerEvent name="updateIdentities" type="c:Update_Identities" />
+
   <!-- Handlers -->
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
 

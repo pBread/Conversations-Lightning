@@ -1,5 +1,7 @@
 ({
   initialize: function (cmp, event, helper) {
+    console.log("initialize ConversationContainer");
+
     const conversation = cmp.get("v.conversation");
     const twilioAccount = cmp.get("v.twilioAccount");
 
@@ -20,6 +22,16 @@
         );
         helper.getUser(cmp, agentParticipant.identity).then((agent) => {
           cmp.set("v.agent", agent);
+
+          const updateIdentities = cmp.getEvent("updateIdentities");
+          console.log("getUser Callback", updateIdentities);
+
+          updateIdentities.setParams({
+            email: agentParticipant.identity,
+            name: agent.Name
+          });
+
+          updateIdentities.fire();
         });
       });
   },

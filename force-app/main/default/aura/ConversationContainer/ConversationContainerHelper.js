@@ -63,7 +63,6 @@
         const curDate = new Date(msg.date_updated);
         const nextDate = new Date(arr[idx + 1].date_updated);
 
-        console.log("showDateTime", Math.abs(curDate - nextDate));
         return (
           // show time if more than X minutes between next message
           Math.abs(curDate - nextDate) > 10 * 60 * 1000 ||
