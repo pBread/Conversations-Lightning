@@ -1,19 +1,19 @@
 ({
   getUser: function (cmp, email) {
     return new Promise((resolve, reject) => {
-      console.log("fired getUser");
+      console.log("fired getUser", { email });
       const action = cmp.get("c.getUser");
 
       action.setParams({ email });
 
       action.setCallback(this, function (res) {
         const state = res.getState();
-        console.log("Callback state ", state);
+        console.log("getUser Callback state ", state);
 
         if (state !== "SUCCESS") throw Error("Failed to fetch conversations");
 
-        const result = JSON.parse(res.getReturnValue());
-        console.log("Callback result ", result);
+        const result = res.getReturnValue();
+        console.log("getUser Callback result ", result);
         if (result.code) return reject(result);
 
         resolve(result);

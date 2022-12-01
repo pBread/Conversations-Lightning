@@ -1,12 +1,5 @@
 public class TwilioConversationApi {
   @AuraEnabled
-  public static User getUser(String email) {
-    User user = [SELECT Id, Name, Email FROM User WHERE Email = :email LIMIT 1];
-
-    return user;
-  }
-
-  @AuraEnabled
   public static List<Twilio_Account__c> getTwilioAccounts() {
     return [SELECT Id, Name FROM Twilio_Account__c];
   }
@@ -47,6 +40,13 @@ public class TwilioConversationApi {
       conversationSid +
       '/Participants'
     );
+  }
+
+  @AuraEnabled
+  public static User getUser(String email) {
+    User user = [SELECT Id, Name, Email FROM User WHERE Email = :email LIMIT 1];
+
+    return user;
   }
 
   private static String makeRequest(String twilioAccountId, String url) {

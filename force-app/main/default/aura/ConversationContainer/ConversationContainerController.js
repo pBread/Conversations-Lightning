@@ -32,6 +32,7 @@
 
   tester: function (cmp, event, helper) {
     [
+      "agent",
       "contact",
       "conversation",
       "messages",
