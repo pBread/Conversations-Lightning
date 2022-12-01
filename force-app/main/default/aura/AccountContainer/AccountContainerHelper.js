@@ -1,7 +1,6 @@
 ({
   getConversations: function (cmp, twilioAccountId) {
     return new Promise((resolve, reject) => {
-      console.log("fired getConversations");
       const action = cmp.get("c.getConversations");
 
       const phoneNumber = cmp.get("v.contact.MobilePhone").replace("+", "%2B");
