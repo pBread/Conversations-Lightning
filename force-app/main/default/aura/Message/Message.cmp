@@ -41,6 +41,19 @@
   </aura:if>
 
   <aura:if isTrue="{!!v.message.isInbound}">
-    <li class="slds-chat-listitem">Outbound {!v.message.body}</li>
+    <li class="slds-chat-listitem slds-chat-listitem_outbound">
+      <div class="slds-chat-message">
+        <div class="slds-chat-message__body">
+          <div class="slds-chat-message__text slds-chat-message__text_outbound">
+            <span>{!v.message.body}</span>
+          </div>
+          <aura:if isTrue="{!v.message.showAuthor}">
+            <div class="slds-chat-message__meta">
+              {!v.contact.Name} • {!v.message.dateTime}
+            </div>
+          </aura:if>
+        </div>
+      </div>
+    </li>
   </aura:if>
 </aura:component>
