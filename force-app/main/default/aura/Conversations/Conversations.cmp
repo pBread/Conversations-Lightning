@@ -27,16 +27,36 @@
   />
 
   <!-- UI -->
-  <div class="c-header">
-    <img height="50" width="50" src="{!$Resource.twilio_logo}" />
-  </div>
-
-  <aura:if isTrue="{!v.contact}">
-    <aura:iteration items="{!v.twilioAccounts}" var="twilioAccount">
-      <c:AccountContainer
-        contact="{!v.contact}"
-        twilioAccount="{!twilioAccount}"
-      />
-    </aura:iteration>
-  </aura:if>
+  <article class="slds-card">
+    <div class="slds-card__header slds-grid">
+      <header class="slds-media slds-media_center slds-has-flexi-truncate">
+        <div class="slds-media__figure">
+          <span class="slds-icon_container">
+            <img height="50" width="50" src="{!$Resource.twilio_logo}" />
+            <span class="slds-assistive-text">Twilio Conversations</span>
+          </span>
+        </div>
+        <div class="slds-media__body">
+          <h2 class="slds-card__header-title">
+            <span
+              class="slds-card__header-link slds-truncate"
+              title="Twilio Conversations"
+            >
+              Twilio Conversations
+            </span>
+          </h2>
+        </div>
+      </header>
+    </div>
+    <div class="slds-card__body slds-card__body_inner">
+      <aura:if isTrue="{!v.contact}">
+        <aura:iteration items="{!v.twilioAccounts}" var="twilioAccount">
+          <c:AccountContainer
+            contact="{!v.contact}"
+            twilioAccount="{!twilioAccount}"
+          />
+        </aura:iteration>
+      </aura:if>
+    </div>
+  </article>
 </aura:component>
