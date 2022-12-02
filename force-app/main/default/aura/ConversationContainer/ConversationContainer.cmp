@@ -64,10 +64,9 @@
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
 
   <!-- UI -->
-  <lightning:button label="Tester" onclick="{!c.tester}" />
 
   <aura:if isTrue="{!v.isVisible}">
-    <section role="log" class="slds-chat">
+    <section role="log" class="slds-chat" onclick="{!c.tester}">
       <div class="slds-chat-bookend">
         <p>
           Conversation with <b>{!v.agent.Name}</b> •

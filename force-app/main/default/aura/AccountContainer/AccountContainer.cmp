@@ -25,7 +25,7 @@
   />
   <aura:attribute
     access="public"
-    default="[{name: 'yoko', email: 'yoko@ono.com'}]"
+    default="[]"
     description="All users of this user in this account"
     name="identities"
     type="Object[]"
@@ -52,7 +52,6 @@
   />
 
   <!-- UI -->
-  <lightning:button label="Tester" onclick="{!c.tester}" />
 
   <ui:inputSelect
     aura:id="identitySelection"
