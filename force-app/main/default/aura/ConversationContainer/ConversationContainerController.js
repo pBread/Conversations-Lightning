@@ -39,6 +39,7 @@
       "agent",
       "contact",
       "conversation",
+      "isMessagesLoaded",
       "messages",
       "participants",
       "twilioAccount"

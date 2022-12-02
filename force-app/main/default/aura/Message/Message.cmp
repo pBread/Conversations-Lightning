@@ -21,8 +21,18 @@
     required="true"
     type="Object"
   />
-  <!-- UI -->
+  <aura:attribute
+    access="public"
+    description="If last"
+    name="isLast"
+    required="true"
+    type="Boolean"
+  />
 
+  <!-- Handler -->
+  <aura:handler action="{!c.onRender}" name="render" value="{!this}" />
+
+  <!-- UI -->
   <aura:if isTrue="{!v.message.isInbound}">
     <li class="slds-chat-listitem slds-chat-listitem_inbound">
       <div class="slds-chat-message">

@@ -61,10 +61,9 @@
   <aura:registerEvent name="updateIdentities" type="c:Update_Identities" />
 
   <!-- Handlers -->
-  <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
+  <aura:handler action="{!c.initialize}" name="init" value="{!this}" />
 
   <!-- UI -->
-
   <aura:if isTrue="{!v.isVisible}">
     <section role="log" class="slds-chat" onclick="{!c.tester}">
       <div class="slds-chat-bookend">
@@ -74,11 +73,17 @@
         </p>
       </div>
 
-      <ul class="slds-chat-list">
-        <aura:iteration items="{!v.messages}" var="message">
+      <ul class="slds-chat-list chat-container" id="chat-container">
+        <aura:iteration
+          indexVar="idx"
+          items="{!v.messages}"
+          loaded="{!v.isMessagesLoaded}"
+          var="message"
+        >
           <c:Message
             agent="{!v.agent}"
             contact="{!v.contact}"
+            isLast="{!idx + 1 == v.messages.length}"
             message="{!message}"
           />
         </aura:iteration>
