@@ -16,7 +16,7 @@
     type="Object"
   />
 
-  <!-- Conversations -->
+  <!-- Component Attributes -->
   <aura:attribute
     access="public"
     description="All conversations of this user in this account"
@@ -25,14 +25,17 @@
   />
   <aura:attribute
     access="public"
-    default="[]"
+    default="[{name: 'yoko', email: 'yoko@ono.com'}]"
     description="All users of this user in this account"
     name="identities"
     type="Object[]"
   />
-
-  <!-- Events -->
-  <!-- <aura:registerEvent name="updateIdentities" type="c:Update_Identities" /> -->
+  <aura:attribute
+    access="public"
+    description="All users of this user in this account"
+    name="selectedIdentity"
+    type="String"
+  />
 
   <!-- Handlers -->
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
@@ -44,9 +47,15 @@
 
   <!-- UI -->
   <lightning:button label="Tester" onclick="{!c.tester}" />
-  <aura:iteration items="{!v.identities}" var="identity">
-    <div>{!identity.name}</div>
-  </aura:iteration>
+
+  <ui:inputSelect
+    aura:id="identitySelection"
+    change="{!c.handleIdentitySelection}"
+  >
+    <aura:iteration items="{!v.identities}" var="identity">
+      <ui:inputSelectOption text="{!identity.name}" />
+    </aura:iteration>
+  </ui:inputSelect>
 
   <aura:iteration items="{!v.conversations}" var="conversation">
     <c:ConversationContainer
