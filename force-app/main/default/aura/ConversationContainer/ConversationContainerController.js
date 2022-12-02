@@ -1,7 +1,5 @@
 ({
   initialize: function (cmp, event, helper) {
-    console.log("initialize ConversationContainer");
-
     const conversation = cmp.get("v.conversation");
     const twilioAccount = cmp.get("v.twilioAccount");
 
@@ -24,8 +22,6 @@
           cmp.set("v.agent", agent);
 
           const updateIdentities = cmp.getEvent("updateIdentities");
-          // const updateIdentities = $A.get("e.c:Update_Identities");
-          console.log("getUser Callback", updateIdentities);
 
           updateIdentities.setParams({
             conversationSid: conversation.conversation_sid,

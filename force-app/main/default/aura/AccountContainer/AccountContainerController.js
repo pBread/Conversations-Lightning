@@ -31,16 +31,15 @@
     const conversationSid = event.getParam("conversationSid");
     const email = event.getParam("email");
     const name = event.getParam("name");
-    const selectedIdentity = event.getParam("selectedIdentity");
+    const identity = { conversationSid, email, name };
+
+    const curSelectedIdentity = cmp.get("v.selectedIdentity");
 
     const identities = JSON.parse(JSON.stringify(cmp.get("v.identities")));
-    cmp.set(
-      "v.identities",
-      identities.concat({ conversationSid, email, name })
-    );
+    cmp.set("v.identities", identities.concat(identity));
 
-    if (!selectedIdentity) {
-      cmp.set("v.selectedIdentity", email);
+    if (!curSelectedIdentity) {
+      cmp.set("v.selectedIdentity", identity);
 
       const identitySelection = cmp.find("identitySelection");
       identitySelection.set("v.value", name);

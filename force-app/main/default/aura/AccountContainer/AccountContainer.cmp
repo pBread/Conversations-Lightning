@@ -34,7 +34,7 @@
     access="public"
     description="All users of this user in this account"
     name="selectedIdentity"
-    type="String"
+    type="Object"
   />
   <aura:attribute
     access="public"
@@ -67,6 +67,7 @@
     <c:ConversationContainer
       contact="{!v.contact}"
       conversation="{!conversation}"
+      isVisible="{!v.selectedIdentity.conversationSid == conversation.conversation_sid}"
       selectedIdentity="{!v.selectedIdentity}"
       twilioAccount="{!v.twilioAccount}"
     />
