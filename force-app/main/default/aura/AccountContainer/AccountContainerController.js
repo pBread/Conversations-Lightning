@@ -12,26 +12,46 @@
 
     const identitySelection = cmp.find("identitySelection");
     const value = identitySelection.get("v.value");
-
-    cmp.set(
-      "v.selectedIdentity",
-      identities.find((identity) => identity.name === value).email
+    const selectedIdentity = identities.find(
+      (identity) => identity.name === value
     );
+
+    cmp.set("v.selectedIdentity", selectedIdentity);
+
+    const conversations = JSON.parse(
+      JSON.stringify(cmp.get("v.conversations"))
+    );
+    const selectedConversation = conversations.find(
+      (convo) => convo.conversation_sid === selectedIdentity.conversationSid
+    );
+    cmp.set("v.selectedConversation", selectedConversation);
   },
 
   handleUpdateIdentities: function (cmp, event, helper) {
+    const conversationSid = event.getParam("conversationSid");
     const email = event.getParam("email");
     const name = event.getParam("name");
     const selectedIdentity = event.getParam("selectedIdentity");
 
     const identities = JSON.parse(JSON.stringify(cmp.get("v.identities")));
-    cmp.set("v.identities", identities.concat({ email, name }));
+    cmp.set(
+      "v.identities",
+      identities.concat({ conversationSid, email, name })
+    );
 
     if (!selectedIdentity) {
       cmp.set("v.selectedIdentity", email);
 
       const identitySelection = cmp.find("identitySelection");
       identitySelection.set("v.value", name);
+
+      const conversations = JSON.parse(
+        JSON.stringify(cmp.get("v.conversations"))
+      );
+      const selectedConversation = conversations.find(
+        (convo) => convo.conversation_sid
+      );
+      cmp.set("v.selectedConversation", selectedConversation);
     }
   },
 
@@ -40,6 +60,7 @@
       "contact",
       "conversations",
       "identities",
+      "selectedConversation",
       "selectedIdentity",
       "twilioAccount"
     ].forEach((attr) => {

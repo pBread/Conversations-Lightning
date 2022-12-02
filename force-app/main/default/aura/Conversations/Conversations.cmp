@@ -32,7 +32,7 @@
       <header class="slds-media slds-media_center slds-has-flexi-truncate">
         <div class="slds-media__figure">
           <span class="slds-icon_container">
-            <img height="50" width="50" src="{!$Resource.twilio_logo}" />
+            <img height="25" width="25" src="{!$Resource.twilio_logo}" />
             <span class="slds-assistive-text">Conversations</span>
           </span>
         </div>

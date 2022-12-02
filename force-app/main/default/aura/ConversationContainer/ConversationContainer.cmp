@@ -22,6 +22,13 @@
     required="true"
     type="Object"
   />
+  <aura:attribute
+    access="public"
+    description="Selected agent"
+    name="selectedIdentity"
+    required="true"
+    type="Object"
+  />
 
   <!-- Conversation Details -->
   <aura:attribute
@@ -52,21 +59,26 @@
   <!-- UI -->
   <lightning:button label="Tester" onclick="{!c.tester}" />
 
-  <section role="log" class="slds-chat">
-    <div class="slds-chat-bookend">
-      <p>
-        Conversation with <b>{!v.agent.Name}</b> • {!v.conversation.lastUpdated}
-      </p>
-    </div>
+  <aura:if
+    isTrue="{!v.selectedIdentity.conversationSid == v.conversation.conversation_sid}"
+  >
+    <section role="log" class="slds-chat">
+      <div class="slds-chat-bookend">
+        <p>
+          Conversation with <b>{!v.agent.Name}</b> •
+          {!v.conversation.lastUpdated}
+        </p>
+      </div>
 
-    <ul class="slds-chat-list">
-      <aura:iteration items="{!v.messages}" var="message">
-        <c:Message
-          agent="{!v.agent}"
-          contact="{!v.contact}"
-          message="{!message}"
-        />
-      </aura:iteration>
-    </ul>
-  </section>
+      <ul class="slds-chat-list">
+        <aura:iteration items="{!v.messages}" var="message">
+          <c:Message
+            agent="{!v.agent}"
+            contact="{!v.contact}"
+            message="{!message}"
+          />
+        </aura:iteration>
+      </ul>
+    </section>
+  </aura:if>
 </aura:component>

@@ -1,4 +1,5 @@
 <aura:event type="COMPONENT" description="Event template">
+  <aura:attribute name="conversationSid" required="true" type="String" />
   <aura:attribute name="email" required="true" type="String" />
   <aura:attribute name="name" required="true" type="String" />
 </aura:event>

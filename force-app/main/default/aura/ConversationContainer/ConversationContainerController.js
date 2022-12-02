@@ -28,6 +28,7 @@
           console.log("getUser Callback", updateIdentities);
 
           updateIdentities.setParams({
+            conversationSid: conversation.conversation_sid,
             email: agentParticipant.identity,
             name: agent.Name
           });

@@ -36,6 +36,12 @@
     name="selectedIdentity"
     type="String"
   />
+  <aura:attribute
+    access="public"
+    description="Conversation currently being displayed"
+    name="selectedConversation"
+    type="Object"
+  />
 
   <!-- Handlers -->
   <aura:handler name="init" value="{!this}" action="{!c.initialize}" />
@@ -61,6 +67,7 @@
     <c:ConversationContainer
       contact="{!v.contact}"
       conversation="{!conversation}"
+      selectedIdentity="{!v.selectedIdentity}"
       twilioAccount="{!v.twilioAccount}"
     />
   </aura:iteration>
