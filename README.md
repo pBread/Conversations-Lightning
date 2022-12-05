@@ -1,18 +1,53 @@
-# Salesforce DX Project: Next Steps
+# Twilio Conversations for Salesforce
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+_This project was created using [Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_create_new.htm)_
 
-## How Do You Plan to Deploy Your Changes?
+[Twilio Conversations](https://www.twilio.com/docs/conversations) is the backbone of text-based communication across [Twilio Frontline](https://www.twilio.com/frontline) and [Twilio Flex](https://www.twilio.com/flex). There's a lot of valuable information in those conversations. This [Salesforce Lightning Component](https://developer.salesforce.com/docs/atlas.en-us.lightning.meta/lightning/intro_components.htm) allows your Salesforce users to view the conversations your customers are having with those agents – with proper security controls, of course – directly from the Salesforce Contact record.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Implementation
 
-## Configure Your Salesforce DX Project
+Twilio Conversations for Salesforce is an [open source](./LICENSE) project and unmanaged Salesforce AppExchange app. It's ready to be used out of the box but also provides you with the ability customize as much as you'd like.
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+### Approach 1: Install the AppExchange Unmanaged Package
 
-## Read All About It
+The easiest way to get started is to simply install the unmanaged Salesforce AppExchange and add the Lightning Component to the Contact record page Layout.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+#### Step 1: Login to your Salesforce Environment
+
+#### Step 2: Copy & paste this link into your browser
+
+```
+https://app.install.placeholder.com
+```
+
+#### Step 3: Add the Lightning Component to the Contact Record Page Layout
+
+<img src="./misc/add-lgt-comp.gif" height="300"/>
+
+### Approach 2: Deploy with Salesforce DX
+
+If you would like to customize the application, you can download this repository and deploy your own application using the Salesforce DX CLI.
+
+#### (Prerequisites) Install Salesforce DX CLI
+
+[Install the Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
+
+### Step 1: Clone Repo
+
+```
+git clone https://github.com/pBread/Conversations-Lightning.git;
+cd Conversations-Lightning;
+npm install;
+```
+
+### Step 2: Login to Salesforce Org with Salesforce CLI
+
+```
+sf login
+```
+
+### Step 3: Deploy
+
+```
+npm run deploy
+```
