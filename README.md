@@ -53,7 +53,7 @@ sf login
 ### Step 2: Clone Repo
 
 ```
-git clone https://github.com/pBread/Conversations-Lightning.git;
+git clone https://github.com/pBread/Twilio-Conversations-for-Salesforce.git;
 cd Conversations-Lightning;
 npm install;
 ```
