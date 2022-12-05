@@ -22,7 +22,19 @@ https://app.install.placeholder.com
 
 #### Step 3: Add the Lightning Component to the Contact Record Page Layout
 
-<img src="./misc/add-component-to-page.gif" height="300"/>
+<img src="./misc/add-component-to-page.png" height="300"/>
+
+#### Step 4: Create a Twilio API Key
+
+Login into the Twilio Console, navigate to API keys & tokens, and create a new API key.
+
+<img src="./misc/create-api-key.png" />
+
+#### Step 5: Add Twilio Credentials to your Salesforce Environment
+
+Login into your Salesforce environment and create a new Twilio Account record using the API key.
+
+<img src="./misc/create-twilio-account.png" height="300"/>
 
 ### Approach 2: Deploy with Salesforce DX
 
@@ -32,7 +44,13 @@ If you would like to customize the application, you can download this repository
 
 [Install the Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
-### Step 1: Clone Repo
+### Step 1: Login to Salesforce Org with Salesforce CLI
+
+```
+sf login
+```
+
+### Step 2: Clone Repo
 
 ```
 git clone https://github.com/pBread/Conversations-Lightning.git;
@@ -40,14 +58,24 @@ cd Conversations-Lightning;
 npm install;
 ```
 
-### Step 2: Login to Salesforce Org with Salesforce CLI
-
-```
-sf login
-```
-
 ### Step 3: Deploy
 
 ```
 npm run deploy
 ```
+
+#### Step 4: Add the Lightning Component to the Contact Record Page Layout
+
+<img src="./misc/add-component-to-page.png" />
+
+#### Step 5: Create a Twilio API Key
+
+Login into the Twilio Console, navigate to API keys & tokens, and create a new API key.
+
+<img src="./misc/create-api-key.png" />
+
+#### Step 6: Add Twilio Credentials to your Salesforce Environment
+
+Login into your Salesforce environment and create a new Twilio Account record using the API key.
+
+<img src="./misc/create-twilio-account.png" />
