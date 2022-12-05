@@ -1,4 +1,5 @@
 <aura:component
+  access="global"
   controller="TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
