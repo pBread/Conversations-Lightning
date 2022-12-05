@@ -22,7 +22,7 @@ https://app.install.placeholder.com
 
 #### Step 3: Add the Lightning Component to the Contact Record Page Layout
 
-<img src="./misc/add-lgt-comp.gif" height="300"/>
+<img src="./misc/add-component-to-page.gif" height="300"/>
 
 ### Approach 2: Deploy with Salesforce DX
 
