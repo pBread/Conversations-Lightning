@@ -44,9 +44,7 @@ public class TwilioConversationApi {
 
   @AuraEnabled
   public static User getUser(String email) {
-    User user = [SELECT Id, Name, Email FROM User WHERE Email = :email LIMIT 1];
-
-    return user;
+    return [SELECT Id, Name, Email FROM User WHERE Email = :email LIMIT 1];
   }
 
   private static String makeRequest(String twilioAccountId, String url) {
@@ -59,7 +57,6 @@ public class TwilioConversationApi {
     HttpRequest req = new HttpRequest();
     req.setEndpoint(url);
     req.setMethod('GET');
-
     Blob headerValue = Blob.valueOf(
       twilioAccount.API_Key__c +
       ':' +
@@ -69,10 +66,8 @@ public class TwilioConversationApi {
       'Authorization',
       'Basic ' + EncodingUtil.base64Encode(headerValue)
     );
-
     Http http = new Http();
     HTTPResponse res = http.send(req);
-
     return res.getBody();
   }
 }
