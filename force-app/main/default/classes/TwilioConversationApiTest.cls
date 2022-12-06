@@ -2,7 +2,7 @@
 private class TwilioConversationApiTest {
   static testMethod void runGetTwilioAccounts() {
     try {
-      List<Twilio_Convo__Twilio_Account__c> twilioAccounts = TwilioConversationApi.getTwilioAccounts();
+      List<Twilio_Account__c> twilioAccounts = TwilioConversationApi.getTwilioAccounts();
     } catch (Exception e) {
     }
   }
