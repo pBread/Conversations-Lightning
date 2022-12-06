@@ -1,6 +1,6 @@
 <aura:component
   access="global"
-  controller="TwilioConversationApi"
+  controller="Twilio_Convo.TwilioConversationApi"
   implements="flexipage:availableForRecordHome, force:hasRecordId"
 >
   <!-- Contact Record -->

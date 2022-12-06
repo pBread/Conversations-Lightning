@@ -57,14 +57,13 @@ public class TwilioConversationApi {
     HttpRequest req = new HttpRequest();
     req.setEndpoint(url);
     req.setMethod('GET');
-    Blob headerValue = Blob.valueOf(
-      twilioAccount.API_Key__c +
-      ':' +
-      twilioAccount.Secret__c
-    );
+
     req.setHeader(
       'Authorization',
-      'Basic ' + EncodingUtil.base64Encode(headerValue)
+      'Basic ' +
+      EncodingUtil.base64Encode(
+        Blob.valueOf(twilioAccount.API_Key__c + ':' + twilioAccount.Secret__c)
+      )
     );
     Http http = new Http();
     HTTPResponse res = http.send(req);

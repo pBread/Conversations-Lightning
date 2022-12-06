@@ -1,4 +1,4 @@
-<aura:component controller="TwilioConversationApi">
+<aura:component controller="Twilio_Convo.TwilioConversationApi">
   <!-- Parent Attributes -->
   <aura:attribute
     access="public"
