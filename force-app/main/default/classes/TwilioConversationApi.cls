@@ -57,7 +57,6 @@ public class TwilioConversationApi {
     HttpRequest req = new HttpRequest();
     req.setEndpoint(url);
     req.setMethod('GET');
-
     req.setHeader(
       'Authorization',
       'Basic ' +

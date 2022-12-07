@@ -18,19 +18,38 @@
         const agentParticipant = participants.find(
           (participant) => participant.identity
         );
-        helper.getUser(cmp, agentParticipant.identity).then((agent) => {
-          cmp.set("v.agent", agent);
+        helper
+          .getUser(cmp, agentParticipant.identity)
+          .then((agent) => {
+            cmp.set("v.agent", agent);
 
-          const updateIdentities = cmp.getEvent("updateIdentities");
+            const updateIdentities = cmp.getEvent("updateIdentities");
 
-          updateIdentities.setParams({
-            conversationSid: conversation.conversation_sid,
-            email: agentParticipant.identity,
-            name: agent.Name
+            updateIdentities.setParams({
+              conversationSid: conversation.conversation_sid,
+              email: agentParticipant.identity,
+              name: agent.Name
+            });
+
+            updateIdentities.fire();
+          })
+          .catch(() => {
+            cmp.set("v.agent", {
+              Id: Math.round(Math.random() * 1000000),
+              Name: agentParticipant.identity,
+              Email: agentParticipant.identity
+            });
+
+            const updateIdentities = cmp.getEvent("updateIdentities");
+
+            updateIdentities.setParams({
+              conversationSid: conversation.conversation_sid,
+              email: agentParticipant.identity,
+              name: agentParticipant.identity
+            });
+
+            updateIdentities.fire();
           });
-
-          updateIdentities.fire();
-        });
       });
   },
 

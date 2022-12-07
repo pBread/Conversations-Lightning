@@ -6,11 +6,8 @@
       action.setParams({ email });
 
       action.setCallback(this, function (res) {
-        const state = res.getState();
-        if (state !== "SUCCESS") throw Error("Failed to fetch user");
-
         const result = res.getReturnValue();
-        if (result.code) return reject(result);
+        if (!result) return reject(result);
 
         resolve(result);
       });
